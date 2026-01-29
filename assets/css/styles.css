@@ -12,7 +12,7 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.35);
 
   --radius: 16px;
-  --max: 980px;
+  --max: 1400px;
 }
 
 *{ box-sizing: border-box; }
@@ -50,7 +50,7 @@ body{
 
 /* ====== Layout ====== */
 .container{
-  width: min(var(--max), calc(100% - 40px));
+  width: min(var(--max), calc(100% - 24px));
   margin: 0 auto;
 }
 
@@ -100,7 +100,18 @@ body{
 .section-head h2{ margin: 0; font-size: 1.6rem; }
 .muted{ color: var(--muted); }
 
-.hero{ padding-top: 72px; }
+.hero{
+  padding-top: 72px; 
+  padding-bottom: 40px;          /* keeps room at bottom */
+  min-height: calc(100vh - 92px); /* fill first screen below fixed header */
+  display: flex;
+  align-items: flex-start;
+}
+
+.hero .hero-grid{
+  margin-top: 40px;              /* fine-tune how high it sits */
+}
+
 .kicker{
   display: inline-block;
   margin: 0 0 14px 0;
@@ -227,7 +238,7 @@ a:hover{ filter: brightness(1.1); }
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(var(--max), calc(100% - 28px));
+  width: min(var(--max), calc(100% - 8px));
   border-radius: 18px;
   border: 1px solid var(--border);
   background: rgba(7,10,15,0.55);
@@ -254,15 +265,16 @@ main.container{
 /* ====== Hero Grid with Photo ====== */
 .hero-grid{
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr;
-  gap: 22px;
+  grid-template-columns: 1.6fr 0.8fr;
+  gap: 264px;
   align-items: center;
 }
 
 .hero-photo{
   position: relative;
   display: grid;
-  place-items: center;
+  place-items: center end;
+  padding-right: 1px; /* fine-tune spacing from edge */
   min-height: 260px;
 }
 
