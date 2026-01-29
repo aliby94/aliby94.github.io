@@ -74,26 +74,47 @@ body{
 
 .nav{
   display: flex;
-  gap: 14px;
+  gap: 16px;
   align-items: center;
+  justify-content: center;
 }
+
 .nav a{
   color: var(--muted);
   text-decoration: none;
   padding: 8px 10px;
   border-radius: 10px;
   border: 1px solid transparent;
+  transition: 
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
 }
-.nav a:hover{
-  color: var(--text);
-  border-color: var(--border);
+.nav-cta:hover{
+  color: var(--text) !important;
+  border-color: var(--border) !important;
   background: rgba(255,255,255,0.03);
 }
 .nav-cta{
-  color: var(--text) !important;
-  border-color: rgba(104,240,255,0.30) !important;
-  background: rgba(104,240,255,0.08);
+  color: var(--muted) !important;
+  border-color: transparent !important;
+  background: transparent;
 }
+
+.nav a.is-active{
+  color: var(--text);
+  background: linear-gradient(
+    180deg,
+    rgba(104,240,255,0.14),
+    rgba(104,240,255,0.06)
+  );
+  border-color: rgba(104,240,255,0.25);
+  box-shadow:
+    0 4px 14px rgba(104,240,255,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
 
 .section{ padding: 64px 0; }
 .section-head{ margin-bottom: 18px; }
@@ -133,7 +154,7 @@ body{
 }
 .lead{
   margin: 0 0 22px 0;
-  max-width: 65ch;
+  max-width: 75ch;
   color: rgba(255,255,255,0.78);
 }
 
@@ -152,7 +173,6 @@ body{
   background: rgba(104,240,255,0.10);
   color: var(--text);
   text-decoration: none;
-  box-shadow: var(--shadow);
 }
 .btn:hover{ background: rgba(104,240,255,0.14); }
 .btn-ghost{
@@ -235,31 +255,46 @@ a:hover{ filter: brightness(1.1); }
 /* ====== Notch Header (floating + shrink) ====== */
 .notch{
   position: fixed;
-  top: 14px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: min(var(--max), calc(100% - 8px));
-  border-radius: 18px;
+
+  display: inline-flex;          /* shrink-wrap to content */
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border-radius: 0 0 26px 26px;
   border: 1px solid var(--border);
-  background: rgba(7,10,15,0.55);
+  border-top: 0;
+
+  background: rgba(7,10,15,0.75);
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
-  transition: transform 180ms ease, padding 180ms ease, border-radius 180ms ease, background 180ms ease;
-  padding: 14px 18px;
+
+  padding: 8px 20px;            /* slim pill */
+  z-index: 50;
+
+  transition: padding 180ms ease, border-radius 180ms ease, background 180ms ease;
+  
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.06);
 }
+
 
 /* compact state */
 .notch.is-compact{
-  padding: 8px 14px;
-  border-radius: 14px;
-  background: rgba(7,10,15,0.70);
+  padding: 6px 16px;
+  border-radius: 0 0 22px 22px;
+  background: rgba(7,10,15,0.88);
 }
-
 /* since header is fixed now, give main top breathing room */
 main.container{
-  padding-top: 92px;
+  padding-top: 76px;
 }
 
+.logo{ display: none; }
 
 
 /* ====== Hero Grid with Photo ====== */
