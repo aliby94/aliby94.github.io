@@ -4,47 +4,152 @@
   <meta charset="UTF-8" />
   <title>Ali Youssef</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ali Youssef — personal website" />
 
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 700px;
-      margin: 60px auto;
-      padding: 0 20px;
-      background: #f9f9f9;
-      color: #222;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <h1>Hi, I’m Ali 👋</h1>
+  <!-- Subtle background effects -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
 
-  <p>
-    Welcome to my personal website.
-  </p>
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Go to top">
+      <span class="logo-dot"></span>
+      <span>ali-youssef</span>
+    </a>
 
-  <p>
-    I’ll use this space to share projects, thoughts, and things I’m working on.
-  </p>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <h2>Links</h2>
-  <ul>
-    <li><a href="https://github.com/aliby94">GitHub</a></li>
-    <li><a href="mailto:youremail@example.com">Email me</a></li>
-  </ul>
+  <main id="top" class="container">
+    <!-- LANDING / ABOUT -->
+    <section id="about" class="section hero">
+      <p class="kicker">Dark • Tech • Minimal</p>
+      <h1>
+        Hi, I’m <span class="accent">Ali</span>.
+        <span class="muted">I build things.</span>
+      </h1>
+
+      <p class="lead">
+        Short 1–2 lines about you. Example: “I’m a software developer focused on X, interested in Y,
+        currently exploring Z.”
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#experience">See experience</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+
+      <div class="hero-meta">
+        <span class="chip">📍 Berlin / Remote</span>
+        <span class="chip">💻 Software / Engineering</span>
+        <span class="chip">🤖 Tech vibe</span>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="section-head">
+        <h2>Education</h2>
+        <p class="muted">Degrees, certificates, and relevant courses.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h3>University / Program</h3>
+          <p class="muted">2018 — 2022 · Location</p>
+          <p>
+            1–2 lines about what you studied, focus areas, or achievements.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Certification / Bootcamp</h3>
+          <p class="muted">2023 · Provider</p>
+          <p>
+            Add highlights: core topics, projects, or scores.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <p class="muted">Work, internships, volunteering, or notable projects.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h3>Role · Company</h3>
+            <p class="muted">2024 — Present · City/Remote</p>
+            <ul>
+              <li>Impact bullet (what you improved / built).</li>
+              <li>Tech bullet (stack, tools, systems).</li>
+              <li>Result bullet (numbers if possible).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <h3>Role · Company</h3>
+            <p class="muted">2022 — 2024 · City/Remote</p>
+            <ul>
+              <li>Another impact bullet.</li>
+              <li>Another tech bullet.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p class="muted">Best ways to reach me.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Say hello</h3>
+          <p class="muted">Email is easiest.</p>
+          <p>
+            <a href="mailto:youremail@example.com">youremail@example.com</a>
+          </p>
+          <p class="muted">Or find me here:</p>
+          <div class="link-row">
+            <a href="https://github.com/aliby94" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="#" target="_blank" rel="noreferrer">CV (PDF)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Status</h3>
+          <p class="muted">Optional</p>
+          <p>Open to opportunities / collaborations / freelance (edit this).</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <span class="muted">© <span id="year"></span> Ali Youssef</span>
+    <span class="muted">Built with HTML + CSS</span>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
-
