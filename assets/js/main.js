@@ -32,3 +32,39 @@ const spy = new IntersectionObserver((entries) => {
 });
 
 sections.forEach(s => spy.observe(s));
+
+
+
+
+(() => {
+  const root = document.documentElement;
+  const hero = document.getElementById("about");
+  if (!hero) return;
+
+  // Tune these:
+  const GAP_MAX = 800;  // big breathing room at very top
+  const GAP_MIN = 24;   // tight spacing once you scroll a bit
+  const SHRINK_OVER = 260; // px of scroll needed to go from max -> min
+
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  const update = () => {
+    const r = hero.getBoundingClientRect();
+
+    // how far you've scrolled past the hero top (in px)
+    const scrolled = clamp(-r.top, 0, SHRINK_OVER);
+
+    // 0..1
+    const t = scrolled / SHRINK_OVER;
+
+    // ease-out feel
+    const ease = 1 - Math.pow(1 - t, 3);
+
+    const gap = GAP_MAX + (GAP_MIN - GAP_MAX) * ease;
+    root.style.setProperty("--hero-gap", `${gap.toFixed(0)}px`);
+  };
+
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+})();

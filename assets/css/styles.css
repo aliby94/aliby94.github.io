@@ -13,6 +13,7 @@
 
   --radius: 16px;
   --max: 1400px;
+  --hero-gap: 80px; /* will be controlled by JS */
 }
 
 *{ box-sizing: border-box; }
@@ -107,8 +108,9 @@ body{
 
 .hero{
   padding-top: 72px; 
-  padding-bottom: 40px;          /* keeps room at bottom */
-  min-height: calc(100vh - 92px); /* fill first screen below fixed header */
+  padding-bottom: var(--hero-gap);          /* keeps room at bottom */
+  transition: padding-bottom 120ms linear , min-height 120ms linear; /* makes it feel smooth even with tiny scrolls */
+  min-height: ccalc(100vh - 92px + var(--hero-gap));
   display: flex;
   align-items: flex-start;
 }
@@ -187,7 +189,7 @@ body{
   gap: 14px;
 }
 .card{
-  grid-column: span 6;
+  grid-column: span 12;
   padding: 18px;
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.02));
@@ -209,14 +211,19 @@ a:hover{ filter: brightness(1.1); }
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.02));
   border: 1px solid var(--border);
+  align-items: start; /* align content to top so dot lines up with heading top */
 }
+
 .tl-dot{
   width: 10px;
   height: 10px;
-  margin-top: 6px;
+  margin-top: 10px; /* increase this to push the dot further down (tweak to taste) */
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 16px rgba(104,240,255,0.5);
+  /* alternative for finer control:
+     transform: translateY(4px);
+  */
 }
 .tl-content h3{ margin: 0 0 4px 0; }
 .tl-content ul{ margin: 8px 0 0 18px; color: rgba(255,255,255,0.80); }
@@ -329,6 +336,28 @@ main.container{
   .cards-3 .card{ grid-column: span 12; }
 }
 
+/* Prevent layout jump: reserve space for expanded education cards (desktop hover only) */
+/* When any education card is hovered, nudge experience down smoothly */
+@media (min-width: 901px){
+
+  /* Base state */
+  #experience{
+    transition: transform 900ms cubic-bezier(.2,.9,.2,1);
+    transition-delay: 400ms;  /* delay going UP */
+    transform: translateY(0);
+    will-change: transform;
+  }
+
+  /* Keep it down while the pointer is anywhere over the education grid */
+  #education .cards-3:hover ~ #experience,
+  /* Also keep it down while any card is hovered (covers scaled/overflow cases) */
+  #education:has(.edu-card:hover) ~ #experience{
+    transform: translateY(10px);
+    transition-delay: 0ms;    /* no delay going DOWN */
+  }
+}
+
+
 /* ====== Education Cards (Hover Expand) ====== */
 .edu-card{
   height: 150px;                 /* collapsed card height */
@@ -340,7 +369,7 @@ main.container{
     transform 360ms cubic-bezier(.2,.9,.2,1),
     box-shadow 360ms ease,
     border-color 300ms ease,
-    height 360ms cubic-bezier(.2,.9,.2,1),
+    height 900ms cubic-bezier(.2,.9,.2,1),
     opacity 360ms ease;
   position: relative;
 }
@@ -425,6 +454,7 @@ main.container{
 /* keep any existing edu-head horizontal motion small/optional (remove big translate) */
 #education .edu-card:hover{
   height: 360px; /* reveal content vertically */
+  
   transform: scale(1.04) translateY(-10px); /* small scale for horizontal growth + lift */
   border-color: rgba(104,240,255,0.45);
   box-shadow:
@@ -482,7 +512,7 @@ main.container{
   transition: transform 500ms ease;
 }
 
-
+/* Here starts the list things */
 /* hidden extra content inside the edu-card */
 .edu-more{
   max-height: 0;                 /* collapsed by default */
@@ -549,3 +579,47 @@ main.container{
 #education .edu-card:hover .edu-more li:nth-child(4){ transition-delay: 320ms; }
 #education .edu-card:hover .edu-more li:nth-child(5){ transition-delay: 380ms; }
 #education .edu-card:hover .edu-more li:nth-child(6){ transition-delay: 440ms; }
+/* Here Ends the list things */
+
+
+/* Timeline dot: base + hover glow */
+.tl-dot{
+  transition: box-shadow 320ms ease, transform 320ms ease, filter 320ms ease;
+}
+
+.tl-item:hover .tl-dot{
+  box-shadow:
+    0 0 14px rgba(104,240,255,0.55),
+    0 0 28px rgba(104,240,255,0.35),
+    0 0 48px rgba(104,240,255,0.20);
+  transform: scale(1.15);
+  filter: brightness(1.1);
+}
+
+
+/* Job title underline "sneak in" */
+.tl-content h3{
+  position: relative;
+  display: inline-block;         /* keeps underline only under text width */
+}
+
+.tl-content h3::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  background: rgba(104,240,255,0.85);
+
+  transform: translateX(-10px) scaleX(0);
+  transform-origin: left;
+  opacity: 0.5;
+
+  transition: transform 900ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
+}
+
+.tl-item:hover .tl-content h3::after{
+  transform: translateX(0) scaleX(1);
+  opacity: 1;
+}
