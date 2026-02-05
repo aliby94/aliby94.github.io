@@ -106,11 +106,12 @@ body{
 .section-head h2{ margin: 0; font-size: 1.6rem; }
 .muted{ color: var(--muted); }
 
+
 .hero{
   padding-top: 72px; 
   padding-bottom: var(--hero-gap);          /* keeps room at bottom */
   transition: padding-bottom 120ms linear , min-height 120ms linear; /* makes it feel smooth even with tiny scrolls */
-  min-height: ccalc(100vh - 92px + var(--hero-gap));
+  
   display: flex;
   align-items: flex-start;
 }
@@ -159,6 +160,7 @@ body{
   background: rgba(104,240,255,0.10);
   color: var(--text);
   text-decoration: none;
+  transition: background 180ms ease, box-shadow 220ms ease, transform 180ms ease;
 }
 .btn:hover{ background: rgba(104,240,255,0.14); }
 .btn-ghost{
@@ -446,14 +448,11 @@ main.container{
 }
 
 /* HOVER: uniformly scale the whole edu-head down so all three lines keep equal distances */
-#education .edu-card:hover .edu-head{
-  transform: scale(0.92); /* smaller but proportional; top edge stays aligned */
-  /* no padding change here — scaling preserves the spacing ratios */
-}
+
 
 /* keep any existing edu-head horizontal motion small/optional (remove big translate) */
 #education .edu-card:hover{
-  height: 360px; /* reveal content vertically */
+  height: 500px; /* reveal content vertically */
   
   transform: scale(1.04) translateY(-10px); /* small scale for horizontal growth + lift */
   border-color: rgba(104,240,255,0.45);
@@ -465,9 +464,12 @@ main.container{
   z-index: 12;
 }
 
-/* subtle heading motion to match the card growth (no transition here — base has it) */
 #education .edu-card:hover .edu-head{
-  transform: translateX(6px); /* no 'transition:' here so exit animates smoothly too */
+  padding: 4px 0;
+  transform: translateX(-30px) translateY(-10px) scale(0.92);
+  transition: transform 400ms ease;
+  transform: translateX(6px);
+  /* no padding change here — scaling preserves the spacing ratios */
 }
 
 /* When the education grid is hovered, dim the non-hovered cards */
@@ -498,11 +500,7 @@ main.container{
   transition: transform 500ms ease;
 }
 
-#education .edu-card:hover .edu-head{
-  padding: 4px 0;
-  transform: translateX(-30px) translateY(-10px);
-  transition: transform 400ms ease;
-}
+
 
 /* reveal meta content when hovered — set a non-zero max-height so it can expand */
 #education .edu-card:hover .edu-meta{
@@ -622,4 +620,138 @@ main.container{
 .tl-item:hover .tl-content h3::after{
   transform: translateX(0) scaleX(1);
   opacity: 1;
+}
+
+
+
+/* ====== Projects Grid ====== */
+.cards-projects .card{
+  grid-column: span 4; /* 12-col -> 3 per row */
+}
+
+@media (max-width: 1100px){
+  .cards-projects .card{ grid-column: span 6; } /* 2 per row */
+}
+@media (max-width: 700px){
+  .cards-projects .card{ grid-column: span 12; } /* 1 per row */
+}
+
+.project-card{
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 460px; /* taller cards */
+  transition: box-shadow 320ms ease, border-color 280ms ease, background 280ms ease;
+}
+
+.project-img{
+  width: 100%;
+  height: 210px; /* slightly taller image */
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  display: block;
+}
+
+.project-body{
+  margin-top: 12px;
+  flex: 1; /* pushes footer to the bottom */
+}
+
+.project-body h3{
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+}
+
+.project-body p{
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Footer pinned to bottom */
+.project-footer{
+  margin-top: 14px;
+}
+
+/* Hover glow ONLY (no lift) */
+.project-card:hover{
+  border-color: rgba(104,240,255,0.40);
+  box-shadow:
+    0 28px 80px rgba(0,0,0,0.70),
+    0 0 30px rgba(104,240,255,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* Remove "dim others" behavior (delete these if you added them earlier) */
+/* (intentionally no .cards-projects:hover opacity rules) */
+
+/* Placeholder card (optional) */
+.project-card--placeholder{
+  display: grid;
+  place-items: center;
+  min-height: 460px;
+  border-style: dashed;
+  opacity: 0.8;
+}
+
+/* Glowy Read more button */
+.btn-glow{
+  border-color: rgba(104,240,255,0.42);
+  background: rgba(104,240,255,0.12);
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.45),
+    0 0 26px rgba(104,240,255,0.18);
+}
+.btn-glow:hover{
+  background: rgba(104,240,255,0.16);
+  box-shadow:
+    0 22px 60px rgba(0,0,0,0.55),
+    0 0 40px rgba(104,240,255,0.22);
+}
+
+
+/* ====== Projects: Hover underline (same style as Experience) ====== */
+
+
+
+/* ====== Project title as link ====== */
+.project-link{
+  color: var(--text);
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+/* Keep underline animation working on the link instead of h3 */
+.project-link::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  background: rgba(104,240,255,0.85);
+
+  transform: translateX(-10px) scaleX(0);
+  transform-origin: left;
+  opacity: 0.5;
+
+  transition:
+    transform 900ms cubic-bezier(.2,.9,.2,1),
+    opacity 220ms ease;
+}
+
+/* Trigger underline when card OR link is hovered/focused */
+.project-card:hover .project-link::after,
+.project-link:hover::after,
+.project-link:focus-visible::after{
+  transform: translateX(0) scaleX(1);
+  opacity: 1;
+}
+
+/* Subtle color lift on hover/focus */
+.project-link:hover,
+.project-link:focus-visible{
+  color: var(--accent);
+  outline: none;
 }

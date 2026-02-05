@@ -44,7 +44,7 @@ sections.forEach(s => spy.observe(s));
   // Tune these:
   const GAP_MAX = 800;  // big breathing room at very top
   const GAP_MIN = 24;   // tight spacing once you scroll a bit
-  const SHRINK_OVER = 260; // px of scroll needed to go from max -> min
+  const SHRINK_OVER = 200; // px of scroll needed to go from max -> min
 
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
