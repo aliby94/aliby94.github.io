@@ -306,22 +306,33 @@ main.container{
 }
 
 .avatar{
-  width: min(280px, 70vw);
+  width: min(320px, 80vw);
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 14px 60px rgba(0,0,0,0.55);
+  border-radius: 32px;
+  border: 1px solid rgba(104, 240, 255, 0.3);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(104, 240, 255, 0.1);
   filter: contrast(1.05) brightness(0.95);
 }
 
+.avatar:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--accent);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(104, 240, 255, 0.3);
+}
 .avatar-ring{
-  position: absolute;
+  /*position: absolute;
   inset: 10px;
   border-radius: 28px;
   border: 1px solid rgba(104,240,255,0.22);
   box-shadow: 0 0 40px rgba(104,240,255,0.08);
-  pointer-events: none;
+  pointer-events: none; */
+
+  display: none;
 }
 
 @media (max-width: 900px){
