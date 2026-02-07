@@ -68,3 +68,40 @@ sections.forEach(s => spy.observe(s));
   window.addEventListener("scroll", update, { passive: true });
   window.addEventListener("resize", update);
 })();
+
+
+// --- Fix for Dynamic Hero Gap Jump (V2) ---
+document.querySelectorAll('.nav a[href^="#"], .hero-actions a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href').slice(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      const headerHeight = 80; 
+      
+      // Get the current gap and the minimum gap
+      const rootStyles = getComputedStyle(document.documentElement);
+      const currentGap = parseInt(rootStyles.getPropertyValue('--hero-gap')) || 0;
+      const minGap = 24; // This matches GAP_MIN in your collapse script
+
+      // Calculate how much the hero will "shrink" during this scroll
+      // If we are at the top, the hero will shrink by (currentGap - minGap)
+      const shrinkCompensation = (currentGap - minGap);
+
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      
+      // The magic formula: 
+      // Current Position + Scroll Offset - Header - The height that will disappear
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight - shrinkCompensation;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      history.pushState(null, null, `#${targetId}`);
+    }
+  });
+});
