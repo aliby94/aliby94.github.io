@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects — Ali Youssef</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="projects-page">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="site-header notch is-compact">
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="#proj1">I</a>
+      <a href="#proj2">II</a>
+      <a href="#proj3">III</a>
+      <a href="#proj4">IV</a>
+    </nav>
+  </header>
+
+    <main class="container" style="padding-top: 10px;">
+        
+        <section id="proj1" class="section project-container">
+            <div class="project-hero">
+                <div class="hero-photo">
+                    <img src="https://robohash.org/ana?set=set3" class="avatar" alt="Anagenisis Hero">
+                </div>
+                <div class="hero-text">
+                    <h1>Anagenisis - Ana</h1>
+                    <div class="hero-meta">
+                        <span class="chip">ROS 2</span>
+                        <span class="chip">C++ / Python</span>
+                        <span class="chip">Simulation</span>
+                        <span class="chip">URDF Modeling</span>
+                        <span class="chip">SLAM / Navigation</span>
+                        <span class="chip">Computer Vision</span>
+                    </div>
+                    <p class="lead">Bridging the gap between theory and deployment, this project leverages Gazebo and custom ROS 2 nodes to demonstrate core autonomy concepts. From multi-sensor fusion and SLAM to vision-guided control, the system is architected to translate abstract control theory into high-impact educational content and visual demonstrations.</p>
+                    <div class="hero-actions">
+                        <a href="https://github.com/aliby94/anagenisis-ana" target="_blank" class="btn btn-sm">GitHub Repo</a>
+                        <a href="#" class="btn btn-sm">SocialMedia</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card project-body-card">
+                <button class="nav-arrow prev" onclick="changeSlide(-1, 1)">‹</button>
+                <button class="nav-arrow next" onclick="changeSlide(1, 1)">›</button>
+                
+                <div class="slider-viewport">
+                    <div class="slider-track" id="track1">
+                        <div class="slide">
+                            <div class="slide-media"><img src="https://robohash.org/1-1"></div>
+                            <div class="slide-text"><h3>Phase I: I Exist</h3><p>The URDF Foundation & Modular Identity. > Built Ana’s digital twin using a modular URDF architecture. This allows for "hot-swapping" sensor payloads—adding LiDARs, cameras, or IMUs—without breaking the core robot identity, establishing a stable internal structure for future evolution.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="https://robohash.org/1-2"></div>
+                            <div class="slide-text"><h3>Phase II: I See & Feel</h3><p>Synchronized Sensor Streams. > Integrated the first live vision and inertial pipelines. Ana now perceives her environment through a virtual camera and processes high-frequency IMU data. This stage focused on stable data transport and transforming raw sensor frames into actionable information.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="https://robohash.org/1-3"></div>
+                            <div class="slide-text"><h3>Phase III: I Move</h3><p>Virtual Mobility & Control Logic. > Launched Ana into a high-fidelity Gazebo environment. Implemented the first movement controllers, allowing Ana to transition from a static observer to an active participant in her world, navigating her first virtual map via manual and programmatic control.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="https://robohash.org/1-3"></div>
+                            <div class="slide-text"><h3>Phase IV: I Recognize</h3><p>Object Detection & Semantic Awareness. > Implemented OpenCV-based vision pipelines to unlock color and object recognition. Ana can now differentiate between environmental elements, setting the stage for autonomous decision-making and goal-oriented tasks in complex surroundings.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <div class="dots" id="dots1">
+                        <span class="dot active" onclick="moveSlide(0, 1)"></span>
+                        <span class="dot" onclick="moveSlide(1, 1)"></span>
+                        <span class="dot" onclick="moveSlide(2, 1)"></span>
+                        <span class="dot" onclick="moveSlide(3, 1)"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section project-container">
+            <span id="proj2" class="ghost-anchor"></span>
+            <div class="project-hero">
+                <div class="hero-photo">
+                    <img src="https://robohash.org/zsl-hero" class="avatar" alt="ZSL Hero">
+                </div>
+                <div class="hero-text">
+                    <h1>ZSL Autonomous Ships</h1>
+                    <div class="hero-meta">
+                        <span class="chip">Embedded</span>
+                        <span class="chip">Python</span>
+                        <span class="chip">Visualization</span>
+                        <span class="chip">ROS2</span>
+                    </div>
+                    <p class="lead">Design and development of four autonomous model ships used as educational platforms for mechatronics students.</p>
+                    <div class="hero-actions">
+                        <a href="#" class="btn btn-sm">Project Gallery</a>
+                        <a href="#" class="btn btn-sm"">System Diagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card project-body-card">
+                <button class="nav-arrow prev" onclick="changeSlide(-1, 2)">‹</button>
+                <button class="nav-arrow next" onclick="changeSlide(1, 2)">›</button>
+                <div class="slider-viewport">
+
+
+                    <div class="slider-track" id="track2">
+                        <div class="slide">
+                            <div class="slide-media"><img src="https://robohash.org/2-1"></div>
+                            <div class="slide-text"><h3>I. Design & Integration</h3><p>Led the full hardware lifecycle: from component selection and procurement to assembly and rigorous system testing. Engineered the power distribution and waterproofing for a centralized Linux-based autonomy stack.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="assets/images/collage2(1)(1).png"></div>
+                            <div class="slide-text"><h3>II. Industry Showcasing</h3><p>Represented the project at major international stages, including <strong>boot Düsseldorf 2025</strong> and <strong>XPONENTIAL Europe</strong>. Developed live sensor visualization tools to demonstrate real-time autonomous navigation to industry experts.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="assets/images/collage(2).png"></div>
+                            <div class="slide-text"><h3>IIII. Mentorship & Coaching</h3><p>Transformed the ships into a stable educational platform for the <strong>PuEmP course</strong>. Served as a technical coach, guiding students through the complexities of mechanical troubleshooting and ROS 2 software integration.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="slider-controls">
+                    <div class="dots" id="dots2">
+                        <span class="dot active" onclick="moveSlide(0, 2)"></span>
+                        <span class="dot" onclick="moveSlide(1, 2)"></span>
+                        <span class="dot" onclick="moveSlide(2, 2)"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section project-container">
+            <span id="proj3" class="ghost-anchor"></span>
+            <div class="project-hero">
+                <div class="hero-photo">
+                    <img src="https://media.assettype.com/bairdmaritime%2F2025-05-27%2Fw8ql7kwy%2FCity-of-Duisburg-Ilja-H%C3%B6pping1.jpg" class="avatar" alt="NOVA Vessel Hero">
+                </div>
+                <div class="hero-text">
+                    <h1>NOVA Research Vessel</h1>
+                    <div class="hero-meta">
+                        <span class="chip">Data Infrastructure</span>
+                        <span class="chip">Inland Shipping</span>
+                        <span class="chip">Real-time Monitoring</span>
+                    </div>
+                    <p class="lead">Built the data infrastructure and sensor suite for an autonomous inland shipping research vessel, focusing on real-time visualization.</p>
+                    <div class="hero-actions">
+                        <a href="https://www.uni-due.de/2025-05-22-taufe-forschungsschiff-nova" target="_blank" class="btn btn-sm">Learn more</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card project-body-card">
+                <button class="nav-arrow prev" onclick="changeSlide(-1, 3)">‹</button>
+                <button class="nav-arrow next" onclick="changeSlide(1, 3)">›</button>
+                <div class="slider-viewport">
+                    <div class="slider-track" id="track3">
+                        <div class="slide">
+                            <div class="slide-media"><img src="https://robohash.org/3-1"></div>
+                            <div class="slide-text"><h3>Sensor Suite</h3><p>Contributed to the physical deployment of the vessel's perception layer, executing the precision installation and cabling of LiDAR, RADAR, and 360° situational awareness cameras. Configured the on-board Linux server and managed sensor-specific software environments to bridge the gap between raw hardware and system-wide compatibility.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="https://robohash.org/3-2"></div>
+                            <div class="slide-text"><h3>Telemetry Dashboard</h3><p>Engineered the software stack responsible for data acquisition and synchronization. Developed custom ROS 2 packages and launch files to fuse multi-modal data streams, enabling real-time display of vessel telemetry and environment perception on the command bridge.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <div class="dots" id="dots3">
+                        <span class="dot active" onclick="moveSlide(0, 3)"></span>
+                        <span class="dot" onclick="moveSlide(1, 3)"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section project-container">
+            <span id="proj4" class="ghost-anchor"></span>
+            <div class="project-hero">
+                <div class="hero-photo">
+                    <img src="assets/images/master_thesis_hero.jpg" class="avatar" alt="Cobotank Hero">
+                </div>
+                <div class="hero-text">
+                    <h1>Maritime Cobot Fusion</h1>
+                    <div class="hero-meta">
+                        <span class="chip">Master's Thesis</span>
+                        <span class="chip">Sensor Fusion</span>
+                        <span class="chip">Automation</span>
+                    </div>
+                    <p class="lead">Sensor integration system providing real-time ship pose data for automated liquid cargo handling (Cobotank).</p>
+                    <div class="hero-actions">
+                        <a href="#" class="btn btn-sm">Read Thesis</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card project-body-card">
+                <button class="nav-arrow prev" onclick="changeSlide(-1, 4)">‹</button>
+                <button class="nav-arrow next" onclick="changeSlide(1, 4)">›</button>
+                <div class="slider-viewport">
+                    <div class="slider-track" id="track4">
+                        <div class="slide">
+                            <div class="slide-media"><img src="assets/images/master_thesis_1.jpg"></div>
+                            <div class="slide-text"><h3>Pose Estimation</h3><p>Developing algorithms to track 6-DOF ship movement during cargo transfer in dynamic harbor environments.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="assets/images/master_thesis_2.jpg"></div>
+                            <div class="slide-text"><h3>Sensor Fusion</h3><p>Combining IMU data with optical sensors to provide a redundant and highly accurate positioning signal.</p></div>
+                        </div>
+                        <div class="slide">
+                            <div class="slide-media"><img src="assets/images/master_thesis_3.png"></div>
+                            <div class="slide-text"><h3>Empirical Validation</h3><p>Developed a dedicated ROS 2 evaluation package to benchmark sensor accuracy against "ground truth" data generated by a Universal Robot (UR). Conducted rigorous performance analysis across diverse edge cases, including camera occlusion and sensor drift, to evaluate the system’s durability and precision in real-world harbor conditions.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <div class="dots" id="dots4">
+                        <span class="dot active" onclick="moveSlide(0, 4)"></span>
+                        <span class="dot" onclick="moveSlide(1, 4)"></span>
+                        <span class="dot" onclick="moveSlide(2, 4)"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+  <script src="assets/js/projects.js"></script>
+</body>
+</html>

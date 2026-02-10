@@ -105,3 +105,7 @@ document.querySelectorAll('.nav a[href^="#"], .hero-actions a[href^="#"]').forEa
     }
   });
 });
+
+
+//this is also stuff just for the projects page
+

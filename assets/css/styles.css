@@ -766,3 +766,242 @@ main.container{
   color: var(--accent);
   outline: none;
 }
+
+
+/* ====== Projects Detail Page ====== */
+.project-detail {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-card {
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-media {
+    order: -1; /* Image on top on mobile */
+  }
+}
+
+.detail-info h3 {
+  margin-top: 30px;
+  color: var(--accent);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+
+/* from here I started playing around for the projects page*/
+
+
+
+/* ====== Projects Page Layout Cleaned ====== */
+.project-container {
+  position: relative; /* Essential for the ghost anchor to work */
+  margin-bottom: 100px;
+}
+
+.ghost-anchor {
+    position: absolute;
+    /* Adjust this value to change where the website "thinks" the section begins */
+    top: 155px; 
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Single, definitive Hero style */
+.project-hero {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* Image fixed, Text fills rest */
+  gap: 24px;
+  align-items: start; /* Aligns title with top of image */
+  padding-top: 40px;
+  margin-bottom: 32px;
+}
+
+.project-hero .hero-photo {
+  display: flex;
+  justify-content: flex-start;
+  width: 320px;       /* Ensures the column stays consistent */
+}
+
+.project-hero .hero-text h1 {
+  margin: 0 0 12px 0;
+  line-height: 1.1;
+}
+
+.project-hero .hero-meta {
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Slider System */
+.project-body-card {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+}
+
+.slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.slide-text { 
+  padding: 60px; 
+}
+
+.slide-media img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+/* Navigation & Controls */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+  color: var(--accent);
+  transform: translateY(-50%) scale(1.2);
+}
+
+.nav-arrow.prev { left: 5px; }
+.nav-arrow.next { right: 5px; }
+
+.slider-controls {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.01); /* Very subtle contrast */
+}
+
+.dots {
+  display: flex;
+  gap: 12px; /* Controlled spacing between dots */
+}
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15); /* Muted inactive state */
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  margin: 0 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  
+}
+
+.dot:hover {
+  background: var(--muted);
+  transform: scale(1.2);
+}
+
+.dot.active { 
+  background: #FFF;     /* Pure white core for maximum shine */
+  transform: scale(1.2);
+  border-color: var(--accent);
+  /* The "Old Version" Glow: multiple layers of cyan shadow */
+  box-shadow: 
+    0 0 10px #FFF, 
+    0 0 20px var(--accent), 
+    0 0 35px rgba(104, 240, 255, 0.6);
+}
+
+/* Unified Responsive Rules */
+@media (max-width: 900px) {
+  .project-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .project-hero .hero-photo {
+    justify-content: center;
+    order: -1;
+  }
+
+  .slide {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-text {
+    padding: 30px;
+  }
+
+  .nav-arrow {
+    display: none; /* Keep mobile clean, use dots */
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* This is the magic line. 120px covers the notch header + extra breathing room */
+  scroll-padding-top: 120px; 
+}
+
+/* Projects page specific nav styling */
+.projects-page .nav a {
+  min-width: 40px;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace; /* Optional: gives it a technical 'roman numeral' feel */
+  font-weight: bold;
+}
+
+/* Re-using your existing .is-active glow logic for the projects page */
+.projects-page .nav a.is-active {
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(104,240,255,0.14), rgba(104,240,255,0.06));
+  border-color: rgba(104,240,255,0.25);
+  box-shadow: 0 4px 14px rgba(104,240,255,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+}
